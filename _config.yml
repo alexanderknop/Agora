@@ -1,0 +1,30 @@
+title: Excepteur occaeuiecat cupidatat.
+description: >-
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+    sed do eiusmod tempor incididunt ut ero labore et dolore
+    magna aliqua. Ut enim ad minim veniam, quis nostrud
+    exercitation ullamco.
+baseurl: ""
+url: ""
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+    - jekyll-feed
+sass:
+    sass_dir: _sass
+
+collections:
+    talks:
+        output: true
+
+permalink: /:categories/:year/:month/:day/:title:output_ext
+future: true
+
+defaults:
+  -
+    scope:
+      path: "_talks"
+    values:
+      layout: "talk"

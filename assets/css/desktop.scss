@@ -1,0 +1,300 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+# only Main files contain this front matter, not partials.
+---
+
+$blue: rgb(0, 145, 252);
+$gray: rgb(112, 112, 112);
+$lightgray: rgb(240, 240, 240);
+
+$helvetica: Helvetica, Arial, sans-serif;
+
+body {
+    margin: 0;
+
+    & > header {
+        background-color: $blue;
+        * {
+            color: white;
+        }
+
+        & > section:first-child {
+            display: flex;
+            justify-content: space-between;
+
+            padding-left: calc(50vw - 540px);
+            padding-right: calc(50vw - 540px);
+
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+            border-bottom: 2px solid white;
+
+            & > div:first-child {
+                font-family: $helvetica;
+
+                & > a {
+                    text-transform: uppercase;
+                    padding-right: 20px;
+
+                    font-size: 10pt;
+                    font-weight: bold;
+
+                    &.current {
+                        font-weight: 100;
+                    }
+                }
+            }
+
+            & > div:last-child {
+                height: auto;
+                width: 10pt;
+
+                background-image: url("/assets/icons/search.png");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+
+                &.selected {
+                    background-position: right;
+
+                    background-color: white;
+                    border-radius: 20px;
+                }
+            }
+        }
+
+        & > section:last-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            max-width: 1080px;
+
+            margin-left: auto;
+            margin-right: auto;
+
+            padding-top: 80px;
+            padding-bottom: 80px;
+
+            & > h1 {
+                font-size: 32pt;
+                margin: 0;
+                margin-bottom: 10px;
+            }
+
+            & > div {
+                width: 60%;
+                text-align: center;
+                font-weight: 100;
+
+                font-size: 13pt;
+
+                font-family: $helvetica;
+            }
+        }
+    }
+
+    & > main {
+        & > div {
+            width: 100vw;
+
+            min-height: 300px;
+
+            padding-top: 80px;
+            padding-bottom: 50px;
+
+            &:first-child {
+                background-color: white;
+                color: $gray;
+            }
+
+            &:last-child {
+                background-color: $lightgray;
+                color: $gray;
+            }
+        }
+
+        & > div.list:first-child {
+            & > ul > li > a {
+                background-color: $blue;
+                color: white;
+            }
+        }
+
+        & > div.list:last-child {
+            & > ul > li > a {
+                border: 2px solid $blue;
+                color: $blue;
+            }
+        }
+
+        & > div.list {
+            & > h1, & > ul {
+                padding-left: calc(50vw - 540px) !important;
+            }
+
+            & > progress {
+                margin-left: calc(50vw - 530px) !important;
+
+                width: 320px;
+            }
+
+            & > h1 {
+                font-weight: 100;
+                margin: 0;
+            }
+
+            & > ul {
+                display: flex;
+                flex-direction: row;
+
+                overflow: hidden;
+
+                list-style-type: none;
+
+                padding: 0;
+                margin: 0;
+
+                padding-top: 20px;
+                padding-bottom: 20px;
+
+                font-family: $helvetica;
+
+                & > li {
+                    flex-shrink: 0;
+
+                    background-color: white;
+
+                    width: 340px;
+
+                    padding: 20px;
+                    box-sizing: border-box;
+
+                    border-radius: 5px;
+                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+                    margin-right: 20px;
+
+                    &:nth-child(n + 4) {
+                        opacity: 0.4;
+                    }
+
+                    & > time {
+                        display: inline-block;
+                        margin-top: 20px;
+                    }
+
+                    & > div:first-of-type {
+                        color: $blue;
+                        margin-top: 40px;
+
+                        font-size: 15pt;
+                        font-weight: bold;
+                    }
+
+                    & > a {
+                        display: inline-block;
+
+                        border-radius: 25px;
+                        padding: 10px;
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+
+                        text-transform: uppercase;
+
+                        border: 0;
+
+                        font-weight: bold;
+
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        & > div.talk {
+            box-sizing: border-box;
+
+            display: grid;
+            grid-template-areas:
+                "close close"
+                "date content"
+                "title content"
+                "name content";
+
+            padding-left: calc(50vw - 540px);
+            padding-right: calc(50vw - 540px);
+
+            padding-top: 80px;
+            padding-bottom: 100px;
+
+            grid-template-columns: 1fr 2fr;
+            grid-column-gap: 50px;
+
+            grid-template-rows: auto auto auto 1fr;
+            grid-row-gap: 10px;
+
+            justify-items: stretch;
+
+            font-family: $helvetica;
+
+            &:last-child {
+                & > div:nth-of-type(1) {
+                    border-bottom: 2px solid $gray;
+                }
+            }
+
+            & > a {
+                grid-area: close;
+
+                justify-self: end;
+            }
+
+            & > time {
+                grid-area: date;
+
+                font-size: 10pt;
+            }
+
+            & > div:nth-of-type(1) {
+                grid-area: title;
+
+                color: $blue;
+                font-weight: bold;
+                font-size: 15pt;
+
+                border-bottom: 2px solid $lightgray;
+
+                padding-bottom: 20px;
+            }
+
+            & > div:nth-of-type(2) {
+                grid-area: name;
+            }
+
+            & > div:nth-of-type(3) {
+                grid-area: content;
+                justify-self: stretch;
+
+                & > p:first-child {
+                    margin-top: 0;
+                }
+            }
+        }
+
+    }
+
+    & > footer {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: calc(50vw - 540px);
+        padding-right: calc(50vw - 540px);
+
+        background-color: $blue;
+        color: white;
+
+        font-family: $helvetica;
+    }
+}

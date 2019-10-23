@@ -1,0 +1,138 @@
+---
+---
+<!doctype html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <script type="text/x-mathjax-config">
+    	MathJax.Hub.Config({
+    		tex2jax: {
+        		inlineMath: [['$','$'], ['\\(','\\)']],
+        		processEscapes: true
+    		}
+    	});
+
+        MathJax.Hub.Config({
+        "HTML-CSS": {availableFonts: ["TeX"]},
+                     MMLorHTML: {prefer: "HTML"}
+        });
+        MathJax.Hub.Register.StartupHook("CommonHTML Jax Ready",function () {
+            var VARIANT = MathJax.OutputJax.CommonHTML.FONTDATA.VARIANT;
+            VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+            VARIANT["bold"].fonts.unshift("MathJax_SansSerif-Bold");
+            VARIANT["italic"].fonts.unshift("MathJax_SansSerif-Italic");
+            VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-Italic");
+        });
+        MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+            var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+            VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+            VARIANT["bold"].fonts.unshift("MathJax_SansSerif-Bold");
+            VARIANT["italic"].fonts.unshift("MathJax_SansSerif-Italic");
+            VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-Italic");
+        });
+        MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+        var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+        VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+        VARIANT["bold"].fonts.unshift("MathJax_SansSerif-Bold");
+        VARIANT["italic"].fonts.unshift("MathJax_SansSerif-Italic");
+        VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-Italic");
+        });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+    <link href="{{ '/assets/css/desktop.css' | relative_url}}"
+            rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <header>
+            <section>
+                <div>
+                    <a class = "current">talks</a>
+                    <a>speakers</a>
+                </div>
+                <div class = "search"></div>
+            </section>
+            <section>
+                <h1>{{ site.title }}</h1>
+                <div>
+                    {{ site.description }}
+                </div>
+            </section>
+        </header>
+
+        <main>
+            {% capture now %}{{'now' | date: '%s' | plus: 0 }}{% endcapture %}
+            {% capture date %}{{page.date | date: '%s' | plus: 0 }}{% endcapture %}
+            {% if date > now %}
+                <div class = "talk">
+                    <a href = "{{ '/' | relative_url }}">x</a>
+                    <time>{{ page.date | date: "%m.%d.%Y"}}</time>
+                    <div>{{ page.title }}</div>
+                    <div>{{ page.speaker }}</div>
+                    <div>
+                        {{ content }}
+                    </div>
+            {% else %}
+                <div class = "list">
+                    <h1>Upcoming events</h1>
+                    <ul>
+                        {% assign counter = 0 %}
+                        {% capture now %}{{'now' | date: '%s' | plus: 0 }}{% endcapture %}
+                        {% for talk in site.talks %}
+                            {% capture date %}{{talk.date | date: '%s' | plus: 0 }}{% endcapture %}
+                            {% if date > now %}
+                                {% assign counter = counter | plus: 1 %}
+                                <li>
+                                    <time>{{ talk.date | date: "%m.%d.%Y"}}</time>
+                                    <div>{{ talk.title }}</div>
+                                    <div>{{ talk.speaker }}</div>
+
+                                    <a href = "{{ talk.url }}">learn more</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <progress value="0" max="{{ counter }}"></progress>
+            {% endif %}
+                </div>
+            {% capture now %}{{'now' | date: '%s' | plus: 0 }}{% endcapture %}
+            {% capture date %}{{page.date | date: '%s' | plus: 0 }}{% endcapture %}
+            {% if date <= now %}
+                <div class = "talk">
+                    <a href = "{{ '/' | relative_url }}">x</a>
+                    <time>{{ page.date | date: "%m.%d.%Y"}}</time>
+                    <div>{{ page.title }}</div>
+                    <div>{{ page.speaker }}</div>
+                    <div>
+                        {{ content }}
+                    </div>
+            {% else %}
+                <div class = "list">
+                    <h1>Past events</h1>
+                    <ul>
+                        {% assign counter = 0 %}
+                        {% capture now %}{{'now' | date: '%s' | plus: 0 }}{% endcapture %}
+                        {% for talk in site.talks %}
+                            {% capture date %}{{talk.date | date: '%s' | plus: 0 }}{% endcapture %}
+                            {% if date <= now %}
+                                {% assign counter = counter | plus: 1 %}
+                                <li>
+                                    <time>{{ talk.date | date: "%m.%d.%Y"}}</time>
+                                    <div>{{ talk.title }}</div>
+                                    <div>{{ talk.speaker }}</div>
+
+                                    <a href = "{{ talk.url }}">learn more</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <progress value="0" max="{{ counter }}"></progress>
+                {% endif %}
+            </div>
+        </main>
+
+        <footer>
+            &copy; Alexander Knop
+        </footer>
+    </body>
+</html>
