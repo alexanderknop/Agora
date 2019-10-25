@@ -65,7 +65,7 @@
             {% capture date %}{{page.date | date: '%s' | plus: 0 }}{% endcapture %}
             {% if date > now %}
                 <div class = "talk">
-                    <a href = "{{ '/' | relative_url }}">x</a>
+                    <a href = "{{ '/' | relative_url }}"><img src = "/assets/icons/close.png"></img></a>
                     <time>{{ page.date | date: "%m.%d.%Y"}}</time>
                     <div>{{ page.title }}</div>
                     <div>{{ page.speaker }}</div>
@@ -76,6 +76,8 @@
                 <div class = "list">
                     <h1>Upcoming events</h1>
                     <ul>
+                        <a class = "arrow left"><img src = "/assets/icons/arrow.png"></img></a>
+                        <a class = "arrow right"><img src = "/assets/icons/arrow.png"></img></a>
                         {% assign counter = 0 %}
                         {% capture now %}{{'now' | date: '%s' | plus: 0 }}{% endcapture %}
                         {% for talk in site.talks %}
@@ -99,7 +101,7 @@
             {% capture date %}{{page.date | date: '%s' | plus: 0 }}{% endcapture %}
             {% if date <= now %}
                 <div class = "talk">
-                    <a href = "{{ '/' | relative_url }}">x</a>
+                    <a href = "{{ '/' | relative_url }}"><img src = "/assets/icons/close.png"></img></a>
                     <time>{{ page.date | date: "%m.%d.%Y"}}</time>
                     <div>{{ page.title }}</div>
                     <div>{{ page.speaker }}</div>
@@ -110,6 +112,8 @@
                 <div class = "list">
                     <h1>Past events</h1>
                     <ul>
+                        <a class = "arrow left"><img src = "/assets/icons/arrow.png"></img></a>
+                        <a class = "arrow right"><img src = "/assets/icons/arrow.png"></img></a>
                         {% assign counter = 0 %}
                         {% capture now %}{{'now' | date: '%s' | plus: 0 }}{% endcapture %}
                         {% for talk in site.talks %}

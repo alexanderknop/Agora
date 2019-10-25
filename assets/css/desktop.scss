@@ -70,17 +70,17 @@ body {
             align-items: center;
 
             max-width: 1080px;
+            line-height: 1.5;
 
             margin-left: auto;
             margin-right: auto;
 
             padding-top: 80px;
-            padding-bottom: 80px;
+            padding-bottom: 100px;
 
             & > h1 {
                 font-size: 32pt;
                 margin: 0;
-                margin-bottom: 10px;
             }
 
             & > div {
@@ -143,6 +143,8 @@ body {
             & > h1 {
                 font-weight: 100;
                 margin: 0;
+
+                margin-bottom: 10px;
             }
 
             & > ul {
@@ -161,7 +163,36 @@ body {
 
                 font-family: $helvetica;
 
+                position: relative;
+
+                & > .arrow {
+                    position: absolute;
+
+                    border: 2px solid $blue;
+                    border-radius: 10px;
+                    padding: 10px;
+
+                    &.left {
+                        top: calc(50% - 20px);
+                        left: calc(25vw - 270px - 20px);
+                        transform: rotate(180deg);
+                    }
+
+                    &.right {
+                        top: calc(50% - 20px);
+                        left: calc(50vw - 540px + 1080px + 25vw - 270px - 20px);
+                    }
+
+                    & > img {
+                        height: 20px;
+                    }
+                }
+
                 & > li {
+                    display: grid;
+
+                    grid-template-rows: auto auto 1fr auto;
+
                     flex-shrink: 0;
 
                     background-color: white;
@@ -172,13 +203,13 @@ body {
                     box-sizing: border-box;
 
                     border-radius: 5px;
-                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-                        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
+                        0 3px 10px 0 rgba(0, 0, 0, 0.049);
 
                     margin-right: 20px;
 
-                    &:nth-child(n + 4) {
-                        opacity: 0.4;
+                    &:nth-of-type(n + 4) {
+                        opacity: 0.1;
                     }
 
                     & > time {
@@ -195,7 +226,10 @@ body {
                     }
 
                     & > a {
-                        display: inline-block;
+                        display: block;
+                        justify-self: start;
+                        align-self: end;
+                        text-align: center;
 
                         border-radius: 25px;
                         padding: 10px;
@@ -206,7 +240,8 @@ body {
 
                         border: 0;
 
-                        font-weight: bold;
+                        font-size: 10pt;
+
 
                         text-decoration: none;
                     }
@@ -224,8 +259,8 @@ body {
                 "title content"
                 "name content";
 
-            padding-left: calc(50vw - 540px);
-            padding-right: calc(50vw - 540px);
+            padding-left: calc(50vw - 405px);
+            padding-right: calc(50vw - 405px);
 
             padding-top: 80px;
             padding-bottom: 100px;
@@ -250,6 +285,16 @@ body {
                 grid-area: close;
 
                 justify-self: end;
+
+                width: 40px;
+                height: 40px;
+
+                & > img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                margin-bottom: 50px;
             }
 
             & > time {
