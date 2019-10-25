@@ -1,0 +1,69 @@
+---
+---
+<!doctype html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <script type="text/x-mathjax-config">
+    	MathJax.Hub.Config({
+    		tex2jax: {
+        		inlineMath: [['$','$'], ['\\(','\\)']],
+        		processEscapes: true
+    		}
+    	});
+
+        MathJax.Hub.Config({
+        "HTML-CSS": {availableFonts: ["TeX"]},
+                     MMLorHTML: {prefer: "HTML"}
+        });
+        MathJax.Hub.Register.StartupHook("CommonHTML Jax Ready",function () {
+            var VARIANT = MathJax.OutputJax.CommonHTML.FONTDATA.VARIANT;
+            VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+            VARIANT["bold"].fonts.unshift("MathJax_SansSerif-Bold");
+            VARIANT["italic"].fonts.unshift("MathJax_SansSerif-Italic");
+            VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-Italic");
+        });
+        MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+            var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+            VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+            VARIANT["bold"].fonts.unshift("MathJax_SansSerif-Bold");
+            VARIANT["italic"].fonts.unshift("MathJax_SansSerif-Italic");
+            VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-Italic");
+        });
+        MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+        var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+        VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+        VARIANT["bold"].fonts.unshift("MathJax_SansSerif-Bold");
+        VARIANT["italic"].fonts.unshift("MathJax_SansSerif-Italic");
+        VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-Italic");
+        });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+    <link href="{{ '/assets/css/desktop.css' | relative_url}}"
+            rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <header>
+            <section>
+                <div>
+                    <a class = "current">talks</a>
+                    <a>speakers</a>
+                </div>
+                <div class = "search"></div>
+            </section>
+            <section>
+                <h1>{{ site.title }}</h1>
+                <div>
+                    {{ site.description }}
+                </div>
+            </section>
+        </header>
+
+        {{ content }}
+
+        <footer>
+            &copy; Alexander Knop
+        </footer>
+    </body>
+</html>
