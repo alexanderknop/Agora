@@ -1,0 +1,15 @@
+<a href = "{{ '/' | relative_url }}">
+    <img src = "/assets/icons/close.png"></img>
+</a>
+<time>
+    {{ page.date | date: "%m.%d.%Y"}}
+</time>
+<div>
+    {{ page.title }}
+</div>
+<div>
+    {{ page.speaker }}
+</div>
+<div>
+    {{ content }}
+</div>
