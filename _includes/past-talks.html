@@ -2,20 +2,22 @@
 <ul>
     <a class = "arrow left"><img src = "/assets/icons/arrow.png"></img></a>
     <a class = "arrow right"><img src = "/assets/icons/arrow.png"></img></a>
+
     {% assign counter = 0 %}
+    {% assign all_talks =  site.talks | sort: date %}
+    {% assign talks = "" | split: "," %}
+
     {% capture now %}{{'now' | date: '%s' | plus: 0 }}{% endcapture %}
-    {% for talk in site.talks %}
-        {% capture date %}{{talk.date | date: '%s' | plus: 0 }}{% endcapture %}
+    {% for current-talk in all_talks %}
+        {% capture date %}{{current-talk.date | date: '%s' | plus: 0 }}{% endcapture %}
         {% if date <= now %}
             {% assign counter = counter | plus: 1 %}
-            <li>
-                <time>{{ talk.date | date: "%m.%d.%Y"}}</time>
-                <div>{{ talk.title }}</div>
-                <div>{{ talk.speaker }}</div>
-
-                <a href = "{{ talk.url }}">learn more</a>
-            </li>
+            {% assign talks = talks | push: current-talk %}
         {% endif %}
+    {% endfor %}        
+
+    {% for current-talk in talks %}
+        {% include talk-abstract.html talk = current-talk %}
     {% endfor %}
 </ul>
 <progress value="0" max="{{ counter }}"></progress>
