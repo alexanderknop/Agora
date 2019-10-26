@@ -25,34 +25,62 @@ function newSearchState(value) {
 }
 
 function updateSearch(value) {
-    history.replaceState({}, "", newSearchState(value));
+    if (value == '') {
+        history.replaceState(null, null, window.location.pathname);
+    } else {
+        history.replaceState({}, "", newSearchState(value));
+    }
 }
 
-function addSearch(value) {
-    history.pushState({}, "", newSearchState(value));
+function addSearch(currentValue, value) {
+    updateSearch(value);
+    if (currentValue == '') {
+        history.pushState(null, null, window.location.pathname);
+    } else {
+        history.pushState({}, "", newSearchState(currentValue));
+    }
 }
 
 
 $(function(){
     setSearch();
+    $('.search > input').attr('previous-value', getSearch());
 
     $(window).bind('popstate', setSearch);
 
     $('.search > a').click(function() {
         $('.search > input').css('display', 'block');
         $('.search > input').animate({width: "125px"}, 100).focus();
+        $('.search > input').attr('previous-value', $('.search > input').val());
     });
 
     $('.search > input').bind('input', function() {
-        updateSearch($('.search > input').val())
+        updateSearch($('.search > input').val());
     });
 
+    $('.search > input').change(function() {
+        addSearch($('.search > input').val(),
+            $('.search > input').attr('previous-value'));        
+    })
+
     $('.search > input').focusout(function(){
-        if (getSearch(window.location.search) != $('.search > input').val()) {
-            addSearch($('.search > input').val())
-        }
         $('.search > input').animate({width: "0px"}, 100, function() {
             $( this ).css('display', 'none');
         });
     });
+
+    $('.search > input').bind("keyup", function(event) {
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+
+        if ($('.search > input').is(":focus")) {
+            $('.search > input').animate({width: "0px"}, 100, function() {
+                $( this ).css('display', 'none');
+            });
+        }
+      }
+    });
+
 });
