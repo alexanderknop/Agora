@@ -49,9 +49,6 @@ body {
             }
 
             & > div:last-child {
-                height: auto;
-                width: 10pt;
-
                 display: flex;
                 flex-direction: row;
 
@@ -61,6 +58,10 @@ body {
                 }
 
                 & > input {
+                    display: none;
+
+                    width: 0px;
+                    
                     margin-right: 10px;
 
                     background-color: $blue;
