@@ -22,8 +22,15 @@ body {
             display: flex;
             justify-content: space-between;
 
-            padding-left: calc(50vw - 540px);
-            padding-right: calc(50vw - 540px);
+            @media (min-width: 1080px) {
+                padding-left: calc(50vw - 540px);
+                padding-right: calc(50vw - 540px);
+            }
+
+            @media (max-width: 1080px) {
+                padding-left: 2vw;
+                padding-right: 2vw;
+            }
 
             padding-top: 20px;
             padding-bottom: 20px;
@@ -155,13 +162,25 @@ body {
 
         & > div.list {
             & > h1, & > ul {
-                padding-left: calc(50vw - 540px) !important;
+                @media (min-width: 1080px) {
+                    padding-left: calc(50vw - 540px) !important;
+                }
+
+                @media (max-width: 1080px) {
+                    padding-left: 2vw !important;
+                }
             }
 
             & > progress {
-                margin-left: calc(50vw - 530px) !important;
+                @media (min-width: 1080px) {
+                    margin-left: calc(50vw - 540px) !important;
+                    width: 320px;
+                }
 
-                width: 320px;
+                @media (max-width: 1080px) {
+                    margin-left: calc(2vw) !important;
+                    width: calc(47vw - 40px);
+                }
             }
 
             & > h1 {
@@ -174,6 +193,16 @@ body {
             & > ul {
                 display: flex;
                 flex-direction: row;
+                @media (min-width: 1080px) {
+                }
+                @media (max-width: 1080px) {
+                    flex-wrap: wrap;
+
+                    & > li {
+                        margin-bottom: 20px;
+                        opacity: 1 !important;
+                    }
+                }
 
                 overflow: hidden;
 
@@ -200,6 +229,10 @@ body {
 
                     cursor: pointer;
 
+                    @media (max-width: 1080px) {
+                        display: none;
+                    }
+
                     &.left {
                         top: calc(50% - 20px);
                         left: calc(25vw - 270px - 20px);
@@ -217,7 +250,9 @@ body {
                 }
 
                 & > li {
-                    position: relative;
+                    @media (min-width: 1080px) {
+                        position: relative;
+                    }
 
                     display: grid;
 
@@ -228,6 +263,14 @@ body {
                     background-color: white;
 
                     width: 340px;
+
+                    @media (min-width: 1080px) {
+                        width: 340px;
+                    }
+
+                    @media (max-width: 1080px) {
+                        width: calc(47vw - 1px);
+                    }
 
                     padding: 20px;
                     box-sizing: border-box;
@@ -367,8 +410,15 @@ body {
     & > footer {
         padding-top: 10px;
         padding-bottom: 10px;
-        padding-left: calc(50vw - 540px);
-        padding-right: calc(50vw - 540px);
+        @media (min-width: 1080px) {
+            padding-left: calc(50vw - 540px);
+            padding-right: calc(50vw - 540px);
+        }
+
+        @media (max-width: 1080px) {
+            padding-left: 2vw;
+            padding-right: 2vw;
+        }
 
         background-color: $blue;
         color: white;
