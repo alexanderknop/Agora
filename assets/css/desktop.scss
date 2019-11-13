@@ -261,14 +261,13 @@ body {
 
                     background-color: white;
 
-                    width: 340px;
-
                     @media (min-width: 1080px) {
                         width: 340px;
+                        margin-right: 20px;
                     }
 
                     @media (max-width: 1080px) {
-                        width: calc(47vw - 1px);
+                        width: calc(96vw - 1px);
                     }
 
                     padding: 20px;
@@ -277,8 +276,6 @@ body {
                     border-radius: 5px;
                     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
                         0 3px 10px 0 rgba(0, 0, 0, 0.049);
-
-                    margin-right: 20px;
 
                     opacity: 0.1;
 
