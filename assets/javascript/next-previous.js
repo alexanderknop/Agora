@@ -1,12 +1,23 @@
+function updateNextPrev() {
+    if ($(".list > ul > li").length <= 3) {
+        $(".list > progress").css("display", "none");
+    }
+    $(".list > ul > a.left").each(function() {
+        if ($( this ).siblings(".current").prevAll().length < 3) {
+            $( this ).css("display", "none");
+        }
+    });
+    $(".list > ul > a.right").each(function() {
+        if ($( this ).siblings(".current").nextAll().length < 3) {
+            $( this ).css("display", "none");
+        }
+    });
+}
+
 $(function(){
     $(".list > ul > li:first-of-type").addClass("current");
 
-    $(".list > ul > a.left").css("display", "none");
-    $(".list > ul > a.right").each(function() {
-        if ($( this ).siblings(".current").nextAll() < 3) {
-            $( this ).css("display", "none");
-        }
-    })
+    updateNextPrev()
 
     $(".list > ul").each(function() {
         $( this ).children("a.left").click(function(){
@@ -21,9 +32,7 @@ $(function(){
             }
             $( this ).siblings('li').css('left', (-parseInt(progress.attr("value")) * 360) + "px");
             current.addClass("current");
-            if ($( this ).siblings(".current").prevAll().length < 3) {
-                $( this ).css("display", "none");
-            }
+            updateNextPrev();
         });
 
         $( this ).children("a.right").click(function(){
@@ -38,9 +47,7 @@ $(function(){
             }
             $( this ).siblings('li').css('left', (-parseInt(progress.attr("value")) * 360) + "px");
             current.addClass("current");
-            if ($( this ).siblings(".current").nextAll().length < 3) {
-                $( this ).css("display", "none");
-            }
+            updateNextPrev();
         });
     });
 })
