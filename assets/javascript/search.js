@@ -1,3 +1,12 @@
+function search() {
+    $('.list > ul > li').css('display', 'grid');
+    $('.list > ul > li').each(function() {
+        if (!$( this ).text().toLowerCase().includes($('.search > input').val().toLowerCase())) {
+            $( this ).css('display', 'none');
+        }
+    })
+}
+
 function setSearch() {
     let searchParams = new URLSearchParams(window.location.search);
     if (searchParams.has('search')) {
@@ -45,6 +54,7 @@ function addSearch(currentValue, value) {
 $(function(){
     setSearch();
     $('.search > input').attr('previous-value', getSearch());
+    search();
 
     $(window).bind('popstate', setSearch);
 
@@ -60,12 +70,13 @@ $(function(){
 
     $('.search > input').change(function() {
         addSearch($('.search > input').val(),
-            $('.search > input').attr('previous-value'));        
+            $('.search > input').attr('previous-value'));
     })
 
     $('.search > input').focusout(function(){
         $('.search > input').animate({width: "0px"}, 100, function() {
             $( this ).css('display', 'none');
+            search();
         });
     });
 
@@ -78,6 +89,7 @@ $(function(){
         if ($('.search > input').is(":focus")) {
             $('.search > input').animate({width: "0px"}, 100, function() {
                 $( this ).css('display', 'none');
+                search();
             });
         }
       }
