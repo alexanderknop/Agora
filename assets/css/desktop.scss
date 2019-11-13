@@ -178,8 +178,7 @@ body {
                 }
 
                 @media (max-width: 1080px) {
-                    margin-left: calc(2vw) !important;
-                    width: calc(47vw - 40px);
+                    display: none;
                 }
             }
 
