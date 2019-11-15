@@ -23,13 +23,11 @@ $(function(){
         $( this ).children("a.left").click(function(){
             var current = $( this ).siblings(".current").removeClass("current");
             $( this ).siblings("a.right").css("display", "block");
-            if (current.prevAll().length > 3) {
-                for (var i = 0; i < 3; i++) {
-                    current = current.prev();
-                }
-                var progress = $( this ).parent().parent().children('progress');
-                progress.attr("value",  parseInt(progress.attr("value")) - 3);
+            for (var i = 0; i < 3; i++) {
+                current = current.prev();
             }
+            var progress = $( this ).parent().parent().children('progress');
+            progress.attr("value",  parseInt(progress.attr("value")) - 3);
             $( this ).siblings('li').css('left', (-parseInt(progress.attr("value")) * 360) + "px");
             current.addClass("current");
             updateNextPrev();
@@ -38,13 +36,11 @@ $(function(){
         $( this ).children("a.right").click(function(){
             var current = $( this ).siblings(".current").removeClass("current");
             $( this ).siblings("a.left").css("display", "block");
-            if (current.nextAll().length > 3) {
-                for (var i = 0; i < 3; i++) {
-                    current = current.next();
-                }
-                var progress = $( this ).parent().parent().children('progress');
-                progress.attr("value",  parseInt(progress.attr("value")) + 3);
+            for (var i = 0; i < 3; i++) {
+                current = current.next();
             }
+            var progress = $( this ).parent().parent().children('progress');
+            progress.attr("value",  parseInt(progress.attr("value")) + 3);
             $( this ).siblings('li').css('left', (-parseInt(progress.attr("value")) * 360) + "px");
             current.addClass("current");
             updateNextPrev();
