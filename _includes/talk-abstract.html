@@ -3,5 +3,5 @@
     <div>{{ include.talk.title }}</div>
     <div>{{ include.talk.speaker }}</div>
 
-    <a href = "{{ include.talk.url }}">learn more</a>
+    <a href = "{{ include.talk.url | relative_url }}">learn more</a>
 </li>
