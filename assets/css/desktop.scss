@@ -8,7 +8,7 @@ $gray: rgb(112, 112, 112);
 $lightgray: rgb(240, 240, 240);
 
 $big: 1200px;
-$middle: 600px;
+$middle: 700px;
 
 $helvetica: Helvetica, Arial, sans-serif;
 
@@ -176,7 +176,6 @@ body {
                 @media (max-width: $big) and (min-width: $middle) {
                     padding-left: 10vw !important;
                 }
-
                 @media (max-width: $middle) {
                     padding-left: 2vw !important;
                 }
@@ -194,6 +193,7 @@ body {
 
                 @media (max-width: $middle) {
                     display: none !important;
+                    padding-left: 2vw !important;
                 }
             }
 
@@ -270,7 +270,7 @@ body {
 
                 & > li {
                     position: relative;
-                
+
                     display: grid;
 
                     grid-template-rows: auto auto 1fr auto;
@@ -289,6 +289,7 @@ body {
                     }
                     @media (max-width: $middle) {
                         width: calc(96vw - 1px);
+                        margin-right: 2vw;
                     }
 
 
@@ -423,12 +424,15 @@ body {
     & > footer {
         padding-top: 10px;
         padding-bottom: 10px;
-        @media (min-width: 1080px) {
+        @media (min-width: $big) {
             padding-left: calc(50vw - 540px);
             padding-right: calc(50vw - 540px);
         }
-
-        @media (max-width: 1080px) {
+        @media (min-width: $middle) and (max-width: $big) {
+            padding-left: calc(10vw);
+            padding-right: calc(10vw);
+        }
+        @media (max-width: $middle) {
             padding-left: 2vw;
             padding-right: 2vw;
         }

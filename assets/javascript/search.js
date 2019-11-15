@@ -4,7 +4,10 @@ function search() {
         if (!$( this ).text().toLowerCase().includes($('.search > input').val().toLowerCase())) {
             $( this ).css('display', 'none');
         }
-    })
+    });
+    $(".list > ul").find("li:visible:first").addClass("current");
+    $(".list > ul").find("li").css("left", "0");
+    updateNextPrev();
 }
 
 function setSearch() {
