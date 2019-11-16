@@ -116,6 +116,26 @@ body {
 
             padding-top: 80px;
             padding-bottom: 100px;
+            text-align: center;
+
+            @media (min-width: $big) {
+                padding-left: calc(50vw - 540px);
+                padding-right: calc(50vw - 540px);
+            }
+
+            @media (max-width: $big) and (min-width: $middle){
+                padding-left: 10vw;
+                padding-right: 10vw;
+            }
+
+            @media (max-width: $middle) {
+                padding-left: 2vw;
+                padding-right: 2vw;
+
+                & > div {
+                    width: 96vw !important;
+                }
+            }
 
             & > h1 {
                 font-size: 32pt;
@@ -260,7 +280,7 @@ body {
                     }
 
                     @media (max-width: $middle) {
-                        display: none;
+                        display: none !important;
                     }
 
                     & > img {
