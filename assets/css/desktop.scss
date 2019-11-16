@@ -369,8 +369,20 @@ body {
                 "title content"
                 "name content";
 
-            padding-left: calc(50vw - 405px);
-            padding-right: calc(50vw - 405px);
+            @media (min-width: $big) {
+                padding-left: calc(50vw - 405px);
+                padding-right: calc(50vw - 405px);
+            }
+
+            @media (max-width: $big) and (min-width: $middle){
+                padding-left: 10vw;
+                padding-right: 10vw;
+            }
+
+            @media (max-width: $middle) {
+                padding-left: 2vw;
+                padding-right: 2vw;
+            }
 
             padding-top: 80px;
             padding-bottom: 100px;
