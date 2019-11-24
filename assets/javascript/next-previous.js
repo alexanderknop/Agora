@@ -140,7 +140,7 @@ $(function(){
         slideWidth += 20;
     } else if (window.screen.width >= 700) {
         numberOfSlides = 2;
-        slideWidth += window.screen.width / 50;
+        slideWidth += window.screen.width * 4 / 100;
     } else {
         numberOfSlides = 1;
         slideWidth += window.screen.width * 4 / 100
