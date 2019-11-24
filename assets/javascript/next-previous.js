@@ -1,23 +1,32 @@
 function updateNextPrev() {
-    $(".list > ul > li").css("opacity", "");
-    $("a.arrow").css("display", "block");
     $(".list").each(function() {
-        var current = $( this ).find("ul > .current");
-        var rest = Math.min(current.nextAll('li:visible').length + 1, numberOfSlides);
-        for (var i = 0; i < rest; i++) {
-            current.css("opacity", "1")
-            current = current.next();
-        }
-
-        if ($( this ).find("ul > li").length <= numberOfSlides) {
-            $( this ).find("progress").css("display", "none");
-        }
-
-        if ($( this ).find(".current").prevAll('li:visible').length < numberOfSlides) {
-            $( this ).find("a.left").css("display", "none");
-        }
-        if ($( this ).find(".current").nextAll('li:visible').length < numberOfSlides) {
+        if ($( this ).find("ul > li:visible").length == 0 &&
+                $( this ).find("div.empty").length == 0) {
+            $( this ).append("<div class = 'empty'>Not Found</div>");
             $( this ).find("a.right").css("display", "none");
+            $( this ).find("a.left").css("display", "none");
+            $( this ).find("progress").css("display", "none");
+        } else if ($( this ).find("ul > li:visible").length > 0){
+            $( this ).find("div.empty").detach();
+            $( this ).find("ul > li").css("opacity", "");
+            $( this ).find("a.arrow").css("display", "block");
+            var current = $( this ).find("ul > .current");
+            var rest = Math.min(current.nextAll('li:visible').length + 1, numberOfSlides);
+            for (var i = 0; i < rest; i++) {
+                current.css("opacity", "1")
+                current = current.next();
+            }
+
+            if ($( this ).find("ul > li:visible").length <= numberOfSlides) {
+                $( this ).find("progress").css("display", "none");
+            }
+
+            if ($( this ).find(".current").prevAll('li:visible').length < numberOfSlides) {
+                $( this ).find("a.left").css("display", "none");
+            }
+            if ($( this ).find(".current").nextAll('li:visible').length < numberOfSlides) {
+                $( this ).find("a.right").css("display", "none");
+            }
         }
     });
 }

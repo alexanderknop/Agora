@@ -192,6 +192,7 @@ body {
         }
 
         & > div.list {
+
             & > h1, & > ul {
                 @media (min-width: $big) {
                     padding-left: calc(50vw - 540px) !important;
@@ -200,6 +201,24 @@ body {
                     padding-left: 10vw !important;
                 }
                 @media (max-width: $middle) {
+                    padding-left: 4vw !important;
+                }
+            }
+
+            & > div.empty {
+                text-align: center;
+                font-size: 30pt;
+
+                @media (min-width: $big) {
+                    padding-left: calc(50vw - 540px) !important;
+                    padding-right: calc(50vw - 540px) !important;
+                }
+                @media (max-width: $big) and (min-width: $middle) {
+                    padding-left: 10vw !important;
+                    padding-right: 10vw !important;
+                }
+                @media (max-width: $middle) {
+                    padding-left: 4vw !important;
                     padding-left: 4vw !important;
                 }
             }
