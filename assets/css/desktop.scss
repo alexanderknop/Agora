@@ -361,27 +361,43 @@ body {
 
         & > div.talk {
             box-sizing: border-box;
-
             display: grid;
-            grid-template-areas:
-                "close close"
-                "date content"
-                "title content"
-                "name content";
 
             @media (min-width: $big) {
                 padding-left: calc(50vw - 405px);
                 padding-right: calc(50vw - 405px);
+                grid-template-areas:
+                    "close close"
+                    "date content"
+                    "title content"
+                    "name content";
+                grid-template-rows: auto auto auto 1fr;
+                grid-row-gap: 10px;
             }
 
             @media (max-width: $big) and (min-width: $middle){
                 padding-left: 10vw;
                 padding-right: 10vw;
+                grid-template-areas:
+                    "close close"
+                    "date content"
+                    "title content"
+                    "name content";
+                grid-template-rows: auto auto auto 1fr;
+                grid-row-gap: 10px;
             }
 
             @media (max-width: $middle) {
                 padding-left: 4vw;
                 padding-right: 4vw;
+                grid-template-areas:
+                    "close close"
+                    "date date"
+                    "title title"
+                    "name name"
+                    "content content";
+                grid-template-rows: auto auto auto auto 1fr;
+                grid-row-gap: 10px;
             }
 
             padding-top: 80px;
@@ -389,9 +405,6 @@ body {
 
             grid-template-columns: 1fr 2fr;
             grid-column-gap: 50px;
-
-            grid-template-rows: auto auto auto 1fr;
-            grid-row-gap: 10px;
 
             justify-items: stretch;
 
@@ -434,11 +447,24 @@ body {
 
                 border-bottom: 2px solid $lightgray;
 
-                padding-bottom: 20px;
+                @media (min-width: $middle) {
+                    padding-bottom: 20px;
+                }
+
+                @media (max-width: $middle) {
+                    padding-bottom: 10px;
+                }
             }
 
             & > div:nth-of-type(2) {
                 grid-area: name;
+                @media (min-width: $middle) {
+                    padding-bottom: 0px;
+                }
+
+                @media (max-width: $middle) {
+                    padding-bottom: 20px;
+                }
             }
 
             & > div:nth-of-type(3) {
