@@ -207,13 +207,13 @@ body {
                     width: 320px;
                 }
                 @media (max-width: $big) and (min-width: $middle) {
+                    margin-left: 10vw !important;
                     width: 40vw;
-                    padding-left: 10vw !important;
                 }
 
                 @media (max-width: $middle) {
+                    margin-left: 4vw !important;
                     width: 75vw;
-                    padding-left: 4vw !important;
                 }
             }
 
@@ -311,7 +311,7 @@ body {
                     }
                     @media (max-width: $middle) {
                         width: calc(80vw - 1px);
-                        margin-right: 4vw;                        
+                        margin-right: 4vw;
                     }
 
 
