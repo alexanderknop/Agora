@@ -58,6 +58,7 @@ function swipeMove(e) {
     moveY = touch.pageY;
 
     if (Math.abs(moveX - startX) < 40) return;
+    e.preventDefault();
 
     $( this ).siblings().addBack().each(function() {
         var start = slideLeft($( this ).parent());
@@ -65,7 +66,6 @@ function swipeMove(e) {
     });
 
     isAnimating = true;
-    e.preventDefault();
 }
 
 function endSwipe(e) {
@@ -77,6 +77,7 @@ function endSwipe(e) {
     $( this ).off('touchend', endSwipe);
 
     if (Math.abs(moveX - startX) === 0) return;
+    e.preventDefault();
 
     var stayAtCur = Math.abs(moveX - startX) < 40 ||
         typeof moveX === "undefined" ? true : false;
@@ -150,34 +151,16 @@ $(function(){
 
     $(".list > ul").each(function() {
         $( this ).children("a.left").click(function(){
-            var current = $( this ).siblings(".current").removeClass("current");
-            $( this ).siblings("a.right").css("display", "block");
-            for (var i = 0; i < numberOfSlides; i++) {
-                current.css("opacity", "");
-                current = current.prev("li:visible");
-            }
-            var progress = $( this ).parent().parent().children('progress');
-            progress.attr("value",  parseInt(progress.attr("value")) - numberOfSlides);
-            $( this ).siblings('li').css('left', (-parseInt(progress.attr("value")) * slideWidth) + "px");
-            current.addClass("current");
-            updateNextPrev();
+            prevSlide($( this ).parent())
         });
 
         $( this ).children("a.right").click(function(){
-            var current = $( this ).siblings(".current").removeClass("current");
-            $( this ).siblings("a.left").css("display", "block");
-            for (var i = 0; i < numberOfSlides; i++) {
-                current.css("opacity", "");
-                current = current.next("li:visible");
-            }
-            var progress = $( this ).parent().parent().children('progress');
-            progress.attr("value",  parseInt(progress.attr("value")) + numberOfSlides);
-            $( this ).siblings('li').css('left', (-parseInt(progress.attr("value")) * slideWidth) + "px");
-            current.addClass("current");
-            updateNextPrev();
+            nextSlide($( this ).parent())
         });
     });
 
-    $(".list > ul > li").mousedown(startSwipe);
-    $(".list > ul > li").on('touchstart', startSwipe);
+    if (window.screen.width < 700) {
+        $(".list > ul > li").mousedown(startSwipe);
+        $(".list > ul > li").on('touchstart', startSwipe);
+    }
 });
