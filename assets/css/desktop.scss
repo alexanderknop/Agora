@@ -36,8 +36,8 @@ body {
             }
 
             @media (max-width: $middle) {
-                padding-left: 2vw;
-                padding-right: 2vw;
+                padding-left: 4vw;
+                padding-right: 4vw;
             }
 
             padding-top: 20px;
@@ -129,11 +129,11 @@ body {
             }
 
             @media (max-width: $middle) {
-                padding-left: 2vw;
-                padding-right: 2vw;
+                padding-left: 4vw;
+                padding-right: 4vw;
 
                 & > div {
-                    width: 96vw !important;
+                    width: 88vw !important;
                 }
             }
 
@@ -197,7 +197,7 @@ body {
                     padding-left: 10vw !important;
                 }
                 @media (max-width: $middle) {
-                    padding-left: 2vw !important;
+                    padding-left: 4vw !important;
                 }
             }
 
@@ -213,7 +213,7 @@ body {
 
                 @media (max-width: $middle) {
                     display: none !important;
-                    padding-left: 2vw !important;
+                    padding-left: 4vw !important;
                 }
             }
 
@@ -302,14 +302,17 @@ body {
                     @media (min-width: $big) {
                         width: 340px;
                         margin-right: 20px;
+                        opacity: 0.1;
                     }
                     @media (max-width: $big) and (min-width: $middle) {
                         width: 38vw;
-                        margin-right: 2vw;
+                        margin-right: 4vw;
+                        opacity: 0.1;
                     }
                     @media (max-width: $middle) {
-                        width: calc(96vw - 1px);
-                        margin-right: 2vw;
+                        width: calc(80vw - 1px);
+                        margin-right: 4vw;
+                        opacity: 0.5;
                     }
 
 
@@ -319,8 +322,6 @@ body {
                     border-radius: 5px;
                     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
                         0 3px 10px 0 rgba(0, 0, 0, 0.049);
-
-                    opacity: 0.1;
 
                     & > time {
                         display: inline-block;
@@ -380,8 +381,8 @@ body {
             }
 
             @media (max-width: $middle) {
-                padding-left: 2vw;
-                padding-right: 2vw;
+                padding-left: 4vw;
+                padding-right: 4vw;
             }
 
             padding-top: 80px;
@@ -465,8 +466,8 @@ body {
             padding-right: calc(10vw);
         }
         @media (max-width: $middle) {
-            padding-left: 2vw;
-            padding-right: 2vw;
+            padding-left: 4vw;
+            padding-right: 4vw;
         }
 
         background-color: $blue;

@@ -62,8 +62,13 @@ $(function(){
     $(window).bind('popstate', setSearch);
 
     $('.search > a').click(function() {
+        inputWidth =  125;
+        if (window.screen.width < 700) {
+            inputWidth = window.screen.width / 4;
+        }
+
         $('.search > input').css('display', 'block');
-        $('.search > input').animate({width: "125px"}, 100).focus();
+        $('.search > input').animate({width: inputWidth + "px"}, 100).focus();
         $('.search > input').attr('previous-value', $('.search > input').val());
     });
 
